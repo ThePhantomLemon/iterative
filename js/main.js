@@ -42,19 +42,17 @@ var docCookies = {
 var Game = function(gameElem){
 	var points = (function(){
 		var score = parseInt(docCookies.getItem('points')) || 0;
-		console.log(score);
 		var inc = function(x) {
 			if(score + x < 0)
 				return false;
 			score += x;
 			text.innerHTML = "POINT TOTAL: " + score;
 			docCookies.setItem('points', String(score), Infinity);
-			console.log(docCookies.getItem('points') + ', ' + docCookies.hasItem('points'));
 			return true;
 		}
 		
 		var text = document.createElement("div");
-		text.innerHTML = "POINT TOTAL: 0";
+		text.innerHTML = "POINT TOTAL: + score;
 		gameElem.appendChild(text);
 		
 		var button = document.createElement("button");
@@ -66,21 +64,23 @@ var Game = function(gameElem){
 		return {score:score, inc:inc};
 	})();
 	var production = (function(){
-		var count = 0;
-				
-		var bought = 0;
+		var count = parseInt(docCookies.getItem('points')) || 0;
 		
 		function buy(x){
-			var cost = bought*x*100;
+			var cost = count*x*100;
 			if(points.inc(-cost)) 
-				bought+=x;
-			cost = bought*x*100;
-			text.innerHTML = "PASSIVE POINT GAIN: " + bought;
+				count+=x;
+			else
+				return false;
+			cost = count*x*100;
+			text.innerHTML = "PASSIVE POINT GAIN: " + count;
 			button.innerHTML = "SPEND ("+cost+")";
+			docCookies.setItem('production', String(count), Infinity);
+			return true;
 		}
 
 		var text = document.createElement("div");
-		text.innerHTML = "PASSIVE POINT GAIN: 0";
+		text.innerHTML = "PASSIVE POINT GAIN: " + count;
 		gameElem.appendChild(text);
 		
 		var button = document.createElement("button");
