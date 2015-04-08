@@ -52,7 +52,7 @@ var Game = function(gameElem){
 		}
 		
 		var text = document.createElement("div");
-		text.innerHTML = "POINT TOTAL: + score;
+		text.innerHTML = "POINT TOTAL: " + score;
 		gameElem.appendChild(text);
 		
 		var button = document.createElement("button");
