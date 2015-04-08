@@ -41,7 +41,7 @@ var docCookies = {
 
 var Game = function(gameElem){
 	var points = (function(){
-	var score = toInt(docCookies.getItem('points')) || 0;
+	var score = parseInt(docCookies.getItem('points')) || 0;
 		console.log(score);
 		var inc = function(x) {
 			if(score + x < 0)
