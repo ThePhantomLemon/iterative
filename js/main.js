@@ -64,7 +64,7 @@ var Game = function(gameElem){
 		return {score:score, inc:inc};
 	})();
 	var production = (function(){
-		var count = parseInt(docCookies.getItem('points')) || 0;
+		var count = parseInt(docCookies.getItem('production')) || 0;
 		
 		function buy(x){
 			var cost = count*x*100;
@@ -78,7 +78,7 @@ var Game = function(gameElem){
 			docCookies.setItem('production', String(count), Infinity);
 			return true;
 		}
-
+		window.setTimeout(function(){ points.inc(count)}, 1000);
 		var text = document.createElement("div");
 		text.innerHTML = "PASSIVE POINT GAIN: " + count;
 		gameElem.appendChild(text);
