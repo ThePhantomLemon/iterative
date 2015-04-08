@@ -6,7 +6,7 @@ var Game = function(gameElem){
 			if(score + x < 0)
 				return false;
 			score += x;
-			scoreElem.innerHTML = "POINT TOTAL: " + score;
+			text.innerHTML = "POINT TOTAL: " + score;
 			return true;
 		}
 		
@@ -16,7 +16,7 @@ var Game = function(gameElem){
 		
 		var button = document.createElement("button");
 		button.setAttribute('type', 'button');
-		button.setAttribute('onclick', 'inc(1)');
+		button.onclick = function() {inc(1)};
 		button.innerHTML = "GET";
 		gameElem.appendChild(button);
 		
@@ -29,11 +29,11 @@ var Game = function(gameElem){
 		
 		function buy(x){
 			var cost = bought*x*100;
-			if(inc(-cost)) 
+			if(points.inc(-cost)) 
 				bought+=x;
 			cost = bought*x*100;
-			passiveElem.innerHTML = "PASSIVE POINT GAIN: " + bought;
-			buyButton.innerHTML = "SPEND ("+cost+")";
+			text.innerHTML = "PASSIVE POINT GAIN: " + bought;
+			button.innerHTML = "SPEND ("+cost+")";
 		}
 
 		var text = document.createElement("div");
@@ -42,7 +42,7 @@ var Game = function(gameElem){
 		
 		var button = document.createElement("button");
 		button.setAttribute('type', 'button');
-		button.setAttribute('onclick', 'buy(1)');
+		button.onclick = function(){buy(1)};
 		button.innerHTML = "SPEND";
 		gameElem.appendChild(button);
 	})();
