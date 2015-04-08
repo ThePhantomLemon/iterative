@@ -14,7 +14,7 @@ var Game = function(gameElem){
 		text.innerHTML = "POINT TOTAL: 0";
 		gameElem.appendChild(text);
 		
-		var button = document.createElement("div");
+		var button = document.createElement("button");
 		button.setAttribute('type', 'button');
 		button.setAttribute('onclick', 'inc(1)');
 		button.innerHTML = "GET";
@@ -44,7 +44,7 @@ var Game = function(gameElem){
 		button.setAttribute('type', 'button');
 		button.setAttribute('onclick', 'buy(1)');
 		button.innerHTML = "SPEND";
-		gameElem.appendChild(text);
+		gameElem.appendChild(button);
 	})();
 };
 
