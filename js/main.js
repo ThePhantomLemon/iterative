@@ -78,7 +78,7 @@ var Game = function(gameElem){
 			docCookies.setItem('production', String(count), Infinity);
 			return true;
 		}
-		window.setTimeout(function(){ points.inc(count)}, 1000);
+		window.setInterval(function(){ points.inc(count)}, 1000);
 		var text = document.createElement("div");
 		text.innerHTML = "PASSIVE POINT GAIN: " + count;
 		gameElem.appendChild(text);
